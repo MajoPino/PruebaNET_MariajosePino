@@ -6,8 +6,9 @@ namespace PruebaNET_MariajosePino.Models;
 [Table("room_types")]
 public class RoomType
 {
-    [Column("id")]
     [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [Column("id")]
     public int Id { get; set; }
 
     [Column("name")]
@@ -19,4 +20,11 @@ public class RoomType
     [Column("description")]
     [MaxLength(255)]
     public string? Description { get; set; }
+
+    public RoomType(int id, string name, string? description = null)
+    {
+        Id = id;
+        Name = name.ToLower().Trim();
+        Description = description?.ToLower().Trim();
+    }
 }

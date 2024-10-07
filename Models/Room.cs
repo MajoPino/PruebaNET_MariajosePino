@@ -7,8 +7,9 @@ namespace PruebaNET_MariajosePino.Models;
 [Table("rooms")]
 public class Room
 {
-    [Column("id")]
     [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [Column("id")]
     public int Id { get; set; }
 
     [Column("room_number")]
@@ -35,4 +36,14 @@ public class Room
 
     // Navigation property for the management of foreign key
     public virtual required RoomType RoomType { get; set; }
+
+    public Room(int id, string roomNumber, int roomTypeId, double pricePerNight, bool availability, byte maxOccupancyPersons)
+    {
+        Id = id;
+        RoomNumber = roomNumber.ToLower().Trim();
+        RoomTypeId = roomTypeId;
+        PricePerNight = pricePerNight;
+        Availability = availability;
+        MaxOccupancyPersons = maxOccupancyPersons;
+    }
 }

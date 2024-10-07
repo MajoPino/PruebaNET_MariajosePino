@@ -11,8 +11,9 @@ namespace PruebaNET_MariajosePino.Models;
 [Table("guests")]
 public class Guest
 {
-    [Column("id")]
     [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [Column("id")]
     public int Id { get; set; }
 
     [Column("first_name")]
@@ -48,4 +49,15 @@ public class Guest
     [Column("birthdate")]
     [DataType(DataType.Date)]
     public DateTime? Birthdate { get; set; }
+
+    public Guest(int id, string firstName, string lastName, string email, string identificationNumber, string phoneNumber, DateTime? birthdate = null)
+    {
+        Id = id;
+        FirstName = firstName.ToLower().Trim();
+        LastName = lastName.ToLower().Trim();
+        Email = email.ToLower().Trim();
+        IdentificationNumber = identificationNumber.ToLower().Trim();
+        PhoneNumber = phoneNumber.ToLower().Trim();
+        Birthdate = birthdate;
+    }
 }

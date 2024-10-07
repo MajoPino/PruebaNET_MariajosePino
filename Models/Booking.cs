@@ -7,8 +7,9 @@ namespace PruebaNET_MariajosePino.Models;
 [Table("bookings")]
 public class Booking
 {
-    [Column("id")]
     [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [Column("id")]
     public int Id { get; set; }
 
     [Column("room_id")]
@@ -42,5 +43,16 @@ public class Booking
     // Navigation properties for the management of foreign keys
     public virtual required Room Room { get; set; }  
     public virtual required Guest Guest { get; set; } 
-    public virtual required Employee Employee { get; set; } 
+    public virtual required Employee Employee { get; set; }
+
+    public Booking(int id, int roomId, int guestId, int employeeId, DateTime startDate, double totalCost, DateTime? endDate = null)
+    {
+        Id = id;
+        RoomId = roomId;
+        GuestId = guestId;
+        EmployeeId = employeeId;
+        StartDate = startDate;
+        TotalCost = totalCost;
+        EndDate = endDate;
+    }
 }

@@ -6,8 +6,9 @@ namespace PruebaNET_MariajosePino.Models;
 [Table("employees")]
 public class Employee
 {
-    [Column("id")]
     [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [Column("id")]
     public int Id { get; set; }
 
     [Column("first_name")]
@@ -39,4 +40,14 @@ public class Employee
     [MaxLength(255)]
     [MinLength(8)]
     public required string Password { get; set; }
+
+    public Employee(int id, string firstName, string lastName, string email, string identificationNumber, string password)
+    {
+        Id = id;
+        FirstName = firstName.ToLower().Trim();
+        LastName = lastName.ToLower().Trim();
+        Email = email.ToLower().Trim();
+        IdentificationNumber = identificationNumber.ToLower().Trim();
+        Password = password.ToLower().Trim();
+    }
 }
