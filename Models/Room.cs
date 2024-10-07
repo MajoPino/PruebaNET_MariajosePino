@@ -35,7 +35,10 @@ public class Room
     public byte MaxOccupancyPersons { get; set; }
 
     // Navigation property for the management of foreign key
-    public virtual required RoomType RoomType { get; set; }
+    public virtual RoomType? RoomType { get; set; }
+
+    //Empty constructor for the seeder
+    public Room() { }
 
     public Room(int id, string roomNumber, int roomTypeId, double pricePerNight, bool availability, byte maxOccupancyPersons)
     {

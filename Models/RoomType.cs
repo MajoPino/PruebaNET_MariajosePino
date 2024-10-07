@@ -21,6 +21,9 @@ public class RoomType
     [MaxLength(255)]
     public string? Description { get; set; }
 
+    //Empty constructor for the seeder
+    public RoomType() { }
+
     public RoomType(int id, string name, string? description = null)
     {
         Id = id;

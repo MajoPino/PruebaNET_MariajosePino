@@ -50,6 +50,9 @@ public class Guest
     [DataType(DataType.Date)]
     public DateTime? Birthdate { get; set; }
 
+    //Empty constructor for the seeder
+    public Guest() { }
+
     public Guest(int id, string firstName, string lastName, string email, string identificationNumber, string phoneNumber, DateTime? birthdate = null)
     {
         Id = id;

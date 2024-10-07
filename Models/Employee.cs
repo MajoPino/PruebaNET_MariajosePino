@@ -41,6 +41,9 @@ public class Employee
     [MinLength(8)]
     public required string Password { get; set; }
 
+    //Empty constructor for the seeder
+    public Employee() { }
+
     public Employee(int id, string firstName, string lastName, string email, string identificationNumber, string password)
     {
         Id = id;
