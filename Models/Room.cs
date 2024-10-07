@@ -1,11 +1,38 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace PruebaNET_MariajosePino.Models;
 
+
+[Table("rooms")]
 public class Room
 {
+    [Column("id")]
+    [Key]
     public int Id { get; set; }
-    public int RoomNumber { get; set; }
+
+    [Column("room_number")]
+    [Required]
+    [MaxLength(10)]
+    public required string RoomNumber { get; set; }
+
+    [Column("room_type_id")]
+    [ForeignKey("RoomType")]
+    [Required]
     public int RoomTypeId { get; set; }
+
+    [Column("price_per_night")]
+    [Required]
     public double PricePerNight { get; set; }
+
+    [Column("availability")]
+    [Required]
     public bool Availability { get; set; }
+
+    [Column("max_occupancy_persons")]
+    [Required]
     public byte MaxOccupancyPersons { get; set; }
+
+    // Navigation property for the management of foreign key
+    public virtual required RoomType RoomType { get; set; }
 }
